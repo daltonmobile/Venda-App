@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neshehe Girls - Grade 5 Tshivenda</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
+:root{--card:#0b1220;--accent:#10b981;--muted:#94a3b8;--glass:rgba(255,255,255,0.04);}
+*{box-sizing:border-box;}
+body{font-family:Quicksand,system-ui,'Segoe UI',Arial;background:linear-gradient(180deg,#062024 0%,#07122a 100%);color:#e6eef1;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+.app{width:100%;max-width:1100px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));box-shadow:0 10px 30px rgba(2,6,23,0.6);border-radius:14px;padding:18px;display:grid;grid-template-columns:340px 1fr;gap:18px;}
+.sidebar{background:var(--card);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px;}
+.profile{display:flex;gap:12px;align-items:center;}
+.avatar{width:64px;height:64px;border-radius:12px;background:url('cover.jpeg') center/cover no-repeat;flex-shrink:0;}
+h1{font-size:18px;margin:0;}p.lead{color:var(--muted);margin:0;font-size:14px;}
+.card{background:var(--card);padding:14px;border-radius:12px;}
+.btn{background:var(--glass);border:1px solid rgba(255,255,255,0.05);padding:8px 12px;border-radius:10px;cursor:pointer;color:#e6eef1;font-family:inherit;font-size:14px;transition:background 0.2s;}
+.btn:hover{background:rgba(255,255,255,0.08);}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#03121a;border:none;font-weight:600;}
+.btn.active{background:var(--accent);color:#03121a;}
+.jump-list{display:grid;gap:6px;margin-top:8px;}
+.jump-item{background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:8px;cursor:pointer;}
+.jump-item:hover{background:rgba(255,255,255,0.05);}
+.slider{width:140px;}
+.big{display:flex;flex-direction:column;gap:14px;}
+.section-title{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:10px;}
+.video-box{width:100%;border-radius:10px;overflow:hidden;margin:10px 0;}
+video{width:100%;height:auto;display:block;}
+.trans-box{background:rgba(16,185,129,0.08);padding:12px;border-radius:8px;margin:10px 0;border-left:3px solid var(--accent);}
+.word-item{background:rgba(255,255,255,0.03);padding:10px;border-radius:8px;margin-top:6px;display:flex;justify-content:space-between;align-items:flex-start;}
+.word-venda{font-size:16px;font-weight:600;color:var(--accent);}
+.phonetic{font-size:12px;color:#06b6d4;font-style:italic;margin-top:2px;}
+.phrase-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:8px;border-left:3px solid var(--accent);}
+.nav-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+footer{font-size:12px;color:var(--muted);text-align:center;padding:8px;}
+@media(max-width:720px){.app{grid-template-columns:1fr;}body{align-items:flex-start;padding:12px;}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="profile">
+      <div class="avatar"></div>
+      <div>
+        <h1>Neshehe Girls &#8211; Grade 5</h1>
+        <p class="lead" id="profileName">Alexis &#8226; Sadee &#8226; Leslee</p>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Voice</strong>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="maleBtn">Male</button>
+          <button class="btn active" id="femaleBtn">Female</button>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:13px">Speed: <input id="rate" class="slider" type="range" min="0.5" max="1.5" step="0.1" value="0.9"></div>
+      <div style="margin-top:6px;font-size:13px;color:var(--muted)">Pitch: <input id="pitch" class="slider" type="range" min="0.8" max="1.4" step="0.1" value="1.15"></div>
+    </div>
+    <div class="card">
+      <strong>Quick Jump</strong>
+      <div class="jump-list">
+        <div class="jump-item" onclick="document.getElementById('sec-video').scrollIntoView({behavior:'smooth'})">&#127917; Venda Music Awards</div>
+        <div class="jump-item" onclick="document.getElementById('sec-ndaa').scrollIntoView({behavior:'smooth'})">&#128075; Greetings: Ndaa &amp; Aa</div>
+        <div class="jump-item" onclick="document.getElementById('sec-radio').scrollIntoView({behavior:'smooth'})">&#128251; Radio &amp; Morning Greetings</div>
+        <div class="jump-item" onclick="document.getElementById('sec-proverbs').scrollIntoView({behavior:'smooth'})">&#128218; Tshivenda Proverbs</div>
+      </div>
+    </div>
+    <div class="card">
+      <strong>Profiles</strong>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn" onclick="setProfile('Alexis')">Alexis</button>
+        <button class="btn" onclick="setProfile('Sadee')">Sadee</button>
+        <button class="btn primary" onclick="setProfile('Leslee')">Leslee</button>
+      </div>
+    </div>
+    <div class="card"><strong>Our Princesses</strong><div style="margin-top:8px"><img src="girls.jpg" alt="Alexis, Sadee and Leslee" style="width:100%;border-radius:10px;object-fit:cover"></div></div>
+  </aside>
+  <main class="big">
+    <div class="card">
+      <h2 style="margin:0 0 6px;color:var(--accent)">&#128218; Advanced Tshivenda &#8211; Grade 5</h2>
+      <p style="color:var(--muted);margin:0;font-size:14px">Learn authentic Tshivenda through real video, cultural context and proverbs.</p>
+    </div>
+
+    <div class="card" id="sec-video">
+      <div class="section-title">&#127917; Venda Music Awards Category</div>
+      <div class="video-box">
+        <video controls>
+          <source src="https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/YouCut_20251103_195937494.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="trans-box">
+        <div style="font-size:16px;font-weight:600">Heyi khethekanyo roto ilwela uri ri kho humbela uri i vhuye</div>
+        <div style="color:var(--muted);margin-top:4px;font-size:13px">= This section (music category) we fought for and asked that it must be brought back</div>
+      </div>
+      <div id="videoWords"></div>
+    </div>
+
+    <div class="card" id="sec-ndaa">
+      <div class="section-title">&#128075; Greetings: Ndaa &amp; Aa</div>
+      <div id="ndaaSection"></div>
+    </div>
+
+    <div class="card" id="sec-radio">
+      <div class="section-title">&#128251; Radio Station &amp; Morning Greetings</div>
+      <div id="radioSection"></div>
+    </div>
+
+    <div class="card" id="sec-proverbs">
+      <div class="section-title">&#128218; Tshivenda Proverbs</div>
+      <p style="color:var(--muted);font-size:13px;margin:0 0 10px 0">Izwi &#8212; traditional wisdom passed down through generations.</p>
+      <div id="proverbsSection"></div>
+    </div>
+
+    <div class="card">
+      <strong>Navigation</strong>
+      <div class="nav-buttons">
+        <a href="index4.html" style="text-decoration:none"><button class="btn" style="width:100%;padding:14px">&#11013; Back to Grade 4</button></a>
+        <a href="index6.html" style="text-decoration:none"><button class="btn primary" style="width:100%;padding:14px">Grade 6 &#10145;</button></a>
+      </div>
+    </div>
+    <footer>Made with &#10084;&#65039; for Mutodi's Princesses<br><a href="privacy.html" style="color:#10b981;font-size:12px;text-decoration:underline">&#128274; Privacy Policy</a></footer>
+  </main>
+</div>
+<script>
+var VIDEO_WORDS=[
+  {venda:"Heyi",eng:"This",syl:"Hey-i",pron:"Heh-yee"},
+  {venda:"Khethekanyo",eng:"Category / section",syl:"Khe-the-ka-nyo",pron:"Keh-teh-kah-nyoh"},
+  {venda:"Rotoilwela",eng:"We will fight for",syl:"Ro-toi-lwe-la",pron:"Roh-toy-lweh-lah"},
+  {venda:"Uri",eng:"That",syl:"U-ri",pron:"Oo-ree"},
+  {venda:"Rikhohumbela",eng:"We ask",syl:"Ri-kho-hu-mbe-la",pron:"Ree-koh-hoom-beh-lah"},
+  {venda:"I",eng:"It",syl:"I",pron:"Ee"},
+  {venda:"Vhuye",eng:"Must come / return",syl:"Vhu-ye",pron:"Vhoo-yeh"},
+  {venda:"Khosi",eng:"King",syl:"Kho-si",pron:"Koh-see"},
+  {venda:"Yanga",eng:"My",syl:"Ya-nga",pron:"Yah-ngah"}
+];
+var NDAA=[
+  {phrase:"Ndaa",eng:"Yes / Respectful greeting (male)",pron:"Ndah",note:"Used by men/boys as a respectful acknowledgement",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ndaa.m4a"},
+  {phrase:"Aa",eng:"Yes / Respectful greeting (female)",pron:"Aah",note:"Used by women/girls as a respectful acknowledgement",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Aa.m4a"},
+  {phrase:"Muya wavho",eng:"Your spirit / Hello (very respectful)",pron:"Moo-yah vah-vho",note:"Said when greeting elders or respected persons",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Muya%20wavho.m4a"},
+  {phrase:"Ndi a livhuwa",eng:"Thank you",pron:"Ndee ah lee-vhoo-wah",note:"Standard expression of gratitude",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ndi%20a%20livhuwa.m4a"}
+];
+var RADIO=[
+  {phrase:"Ndi matsheloni",eng:"Good morning (greeting)",pron:"Ndee ma-tshe-lo-nee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/matsheloni.m4a"},
+  {phrase:"Ndi matsheloni avhudi",eng:"Good morning, I'm well",pron:"Ndee ma-tshe-lo-nee avoo-dee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/matsheloni%20answer.m4a"},
+  {phrase:"Ndi a fara Tshivenda",eng:"I speak Tshivenda",pron:"Ndee ah fah-rah Chee-vehn-dah",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ndi%20a%20fara%20tshivenda.m4a"},
+  {phrase:"Ndi bva Limpopo",eng:"I am from Limpopo",pron:"Ndee bvah Lim-po-po",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ndi%20bva%20Limpopo.m4a"},
+  {phrase:"Ndi Mutodi",eng:"I am Mutodi",pron:"Ndee Moo-toh-dee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ndi%20Mutodi.m4a"}
+];
+var PROVERBS=[
+  {venda:"Muthu ndi muthu nga vhanwe vhathu.",eng:"A person is a person because of other people.",lesson:"Ubuntu — we are who we are because of community."},
+  {venda:"Tshiimiswa tshi ima nga mutsho.",eng:"A clay pot stands on three stones.",lesson:"Success depends on cooperation and support."},
+  {venda:"Nngu i tsha funwa i tsha funwa.",eng:"A goat is loved while it's still alive.",lesson:"Appreciate people while they are still with you."},
+  {venda:"Mutengo wa muvhi ndi u bva.",eng:"The price of a bad deed is separation.",lesson:"Wrong actions lead to consequences and loss."},
+  {venda:"Gole &#8212; a li na vhuswa.",eng:"A year without harvest / empty year.",lesson:"Hard work brings fruit; laziness brings nothing."}
+];
+var rate=0.9;
+function playAudio(url){if(!url){alert('Audio coming soon!');return;}var a=new Audio(url);a.playbackRate=rate;a.play().catch(function(){alert('Could not play audio. Check your internet connection.');});}
+function setProfile(p){document.getElementById('profileName').textContent=p;}
+function renderVideoWords(){var el=document.getElementById('videoWords');el.innerHTML='<div style="margin-top:10px;font-weight:600;color:var(--muted);font-size:13px">Word Breakdown:</div>';VIDEO_WORDS.forEach(function(w){el.innerHTML+='<div class="word-item"><div><div class="word-venda">'+w.venda+'</div><div style="color:var(--muted);font-size:13px">'+w.eng+'</div><div class="phonetic">'+w.syl+' &bull; '+w.pron+'</div></div></div>';});}
+function renderNdaa(){var el=document.getElementById('ndaaSection');el.innerHTML='';NDAA.forEach(function(n){el.innerHTML+='<div class="phrase-card"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="flex:1"><strong style="font-size:18px">'+n.phrase+'</strong><div style="color:var(--muted);font-size:13px;margin-top:3px">'+n.eng+'</div><div class="phonetic">'+n.pron+'</div><div style="color:#f59e0b;font-size:12px;margin-top:4px;font-style:italic">'+n.note+'</div></div><button class="btn" onclick="playAudio(\''+n.audio+'\')">&#128266;</button></div></div>';});}
+function renderRadio(){var el=document.getElementById('radioSection');el.innerHTML='';RADIO.forEach(function(r){el.innerHTML+='<div class="phrase-card"><div style="display:flex;justify-content:space-between;align-items:center"><div style="flex:1"><strong>'+r.phrase+'</strong><div style="color:var(--muted);font-size:13px;margin-top:2px">'+r.eng+'</div><div class="phonetic">'+r.pron+'</div></div><button class="btn" onclick="playAudio(\''+r.audio+'\')">&#128266;</button></div></div>';});}
+function renderProverbs(){var el=document.getElementById('proverbsSection');el.innerHTML='';PROVERBS.forEach(function(p){el.innerHTML+='<div class="phrase-card"><strong style="font-size:15px;color:var(--accent)">'+p.venda+'</strong><div style="color:var(--muted);font-size:13px;margin-top:4px">'+p.eng+'</div><div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:6px;margin-top:8px;font-size:12px;color:#06b6d4;font-style:italic">&#128161; '+p.lesson+'</div></div>';});}
+document.getElementById('maleBtn').addEventListener('click',function(){document.getElementById('maleBtn').classList.add('active');document.getElementById('femaleBtn').classList.remove('active');});
+document.getElementById('femaleBtn').addEventListener('click',function(){document.getElementById('femaleBtn').classList.add('active');document.getElementById('maleBtn').classList.remove('active');});
+document.getElementById('rate').addEventListener('input',function(e){rate=parseFloat(e.target.value);});
+renderVideoWords();renderNdaa();renderRadio();renderProverbs();
+</script>
+</body>
+</html>

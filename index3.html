@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neshehe Girls - Grade 3 Tshivenda</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
+:root{--card:#0b1220;--accent:#10b981;--muted:#94a3b8;--glass:rgba(255,255,255,0.04);}
+*{box-sizing:border-box;}
+body{font-family:Quicksand,system-ui,'Segoe UI',Arial;background:linear-gradient(180deg,#062024 0%,#07122a 100%);color:#e6eef1;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+.app{width:100%;max-width:1100px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));box-shadow:0 10px 30px rgba(2,6,23,0.6);border-radius:14px;padding:18px;display:grid;grid-template-columns:340px 1fr;gap:18px;}
+.sidebar{background:var(--card);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px;}
+.profile{display:flex;gap:12px;align-items:center;}
+.avatar{width:64px;height:64px;border-radius:12px;background:url('cover.jpeg') center/cover no-repeat;flex-shrink:0;}
+h1{font-size:18px;margin:0;}p.lead{color:var(--muted);margin:0;font-size:14px;}
+.card{background:var(--card);padding:14px;border-radius:12px;}
+.btn{background:var(--glass);border:1px solid rgba(255,255,255,0.05);padding:8px 12px;border-radius:10px;cursor:pointer;color:#e6eef1;font-family:inherit;font-size:14px;transition:background 0.2s;}
+.btn:hover{background:rgba(255,255,255,0.08);}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#03121a;border:none;font-weight:600;}
+.btn.active{background:var(--accent);color:#03121a;}
+.topic-list{display:grid;gap:6px;margin-top:8px;max-height:380px;overflow-y:auto;}
+.topic-item{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;cursor:pointer;transition:background 0.2s;}
+.topic-item:hover{background:rgba(255,255,255,0.05);}
+.slider{width:140px;}
+.big{display:flex;flex-direction:column;gap:14px;}
+.conv-card{background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;margin-top:8px;}
+.question-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px;}
+.q-label{color:var(--accent);font-weight:700;flex-shrink:0;}
+.phonetic{font-size:12px;color:#06b6d4;font-style:italic;margin-top:3px;}
+.response-group{margin-top:12px;display:grid;gap:8px;}
+.response-item{background:rgba(255,255,255,0.03);padding:10px;border-radius:8px;}
+.resp-type{font-size:11px;color:#f59e0b;font-weight:600;margin-bottom:4px;}
+.resp-row{display:flex;align-items:flex-start;gap:8px;}
+.nav-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.status{color:var(--muted);font-size:12px;margin-top:6px;}
+footer{font-size:12px;color:var(--muted);text-align:center;padding:8px;}
+@media(max-width:720px){.app{grid-template-columns:1fr;}body{align-items:flex-start;padding:12px;}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="profile">
+      <div class="avatar"></div>
+      <div>
+        <h1>Neshehe Girls &#8211; Grade 3</h1>
+        <p class="lead" id="profileName">Alexis &#8226; Sadee &#8226; Leslee</p>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Voice</strong>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="maleBtn">Male</button>
+          <button class="btn active" id="femaleBtn">Female</button>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:13px">Speed: <input id="rate" class="slider" type="range" min="0.5" max="1.5" step="0.1" value="0.9"></div>
+      <div style="margin-top:6px;font-size:13px;color:var(--muted)">Pitch: <input id="pitch" class="slider" type="range" min="0.8" max="1.4" step="0.1" value="1.15"></div>
+    </div>
+    <div class="card">
+      <strong>Topics</strong>
+      <div class="topic-list" id="topicsList"></div>
+    </div>
+    <div class="card">
+      <strong>Profiles</strong>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn" onclick="setProfile('Alexis')">Alexis</button>
+        <button class="btn" onclick="setProfile('Sadee')">Sadee</button>
+        <button class="btn primary" onclick="setProfile('Leslee')">Leslee</button>
+      </div>
+    </div>
+    <div class="card">
+      <strong>Progress</strong>
+      <div style="margin-top:8px;color:var(--muted)" id="progress">Conversations &amp; Q&amp;A</div>
+      <div class="status" id="audioStatus">Loading...</div>
+    </div>
+    <div class="card"><strong>Our Princesses</strong><div style="margin-top:8px"><img src="girls.jpg" alt="Alexis, Sadee and Leslee" style="width:100%;border-radius:10px;object-fit:cover"></div></div>
+  </aside>
+  <main class="big">
+    <div class="card">
+      <h2 style="margin:0 0 6px 0;color:var(--accent)">&#128172; Conversations &#8211; Grade 3</h2>
+      <p style="color:var(--muted);margin:0;font-size:14px">Learn to ask questions and answer positively and negatively in Tshivenda.</p>
+    </div>
+    <div id="conversationsSection"></div>
+    <div class="card">
+      <strong>Navigation</strong>
+      <div class="nav-buttons">
+        <a href="index2.html" style="text-decoration:none"><button class="btn" style="width:100%;padding:14px">&#11013; Back to Grade 2</button></a>
+        <a href="index4.html" style="text-decoration:none"><button class="btn primary" style="width:100%;padding:14px">Grade 4 &#10145;</button></a>
+      </div>
+    </div>
+    <footer>Made with &#10084;&#65039; for Mutodi's Princesses<br><a href="privacy.html" style="color:#10b981;font-size:12px;text-decoration:underline">&#128274; Privacy Policy</a></footer>
+  </main>
+</div>
+<script>
+var CONVERSATIONS=[
+  {topic:"What are you doing?",img:"https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400&h=200&fit=crop",
+   question:{venda:"Ni khou eta mini?",english:"What are you doing?",syllables:"Ni khou e-ta mi-ni?",pron:"Nee khoo eh-tah mee-nee?",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ni%20khou%20u%20etamini.m4a"},
+   responses:[
+     {type:"Response",venda:"Ndi khou ita zwithu.",english:"I am doing things.",syllables:"Ndi khou i-ta zwi-thu.",pron:"Ndee khoo ee-tah zwee-too.",audio:""}
+   ]},
+  {topic:"Are you happy?",img:"https://images.unsplash.com/photo-1492681290082-e932832941e6?w=400&h=200&fit=crop",
+   question:{venda:"No takala?",english:"Are you happy?",syllables:"No ta-ka-la?",pron:"No tah-kah-lah?",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/No%20takala.m4a"},
+   responses:[
+     {type:"Positive",venda:"Ndo takala.",english:"Yes, I'm happy.",syllables:"Ndo ta-ka-la.",pron:"Ndo tah-kah-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ndo%20takala.m4a"}
+   ]},
+  {topic:"Are you hungry?",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=200&fit=crop",
+   question:{venda:"Ni na nndala?",english:"Are you hungry?",syllables:"Ni na n-nda-la?",pron:"Nee nahn-ndah-lah?",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ni%20na%20nndala.m4a"},
+   responses:[
+     {type:"Positive",venda:"E ndi na nndala.",english:"Yes, I'm hungry.",syllables:"E ndi na n-nda-la.",pron:"Eh ndee nahn-ndah-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ndina%20nndala.m4a"},
+     {type:"Negative",venda:"A thi na nndala.",english:"I'm not hungry.",syllables:"A thi na n-nda-la.",pron:"Ah thee nahn-ndah-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/A%20thina%20nndala.m4a"}
+   ]},
+  {topic:"Are you tired?",img:"https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400&h=200&fit=crop",
+   question:{venda:"No neta?",english:"Are you tired?",syllables:"No ne-ta?",pron:"No neh-tah?",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/No%20neta.m4a"},
+   responses:[
+     {type:"Positive",venda:"E ndo neta.",english:"Yes, I'm tired.",syllables:"E ndo ne-ta.",pron:"Eh ndo neh-tah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ndo%20neta.m4a"},
+     {type:"Positive (Plural)",venda:"A ri ngo neta.",english:"Yes, we are tired.",syllables:"A ri ngo ne-ta.",pron:"Ah ree ngo neh-tah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ari%20ngo%20neta.m4a"},
+     {type:"Negative",venda:"A thi ngo neta.",english:"I'm not tired.",syllables:"A thi ngo ne-ta.",pron:"Ah thee ngo neh-tah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Athi%20ngo%20neta.m4a"},
+     {type:"Negative (Plural)",venda:"Hayi a ri ngo neta.",english:"We are not tired.",syllables:"Ha-yi a ri ngo ne-ta.",pron:"Hah-yee ah ree ngo neh-tah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20ari%20ngo%20netaa.m4a"}
+   ]},
+  {topic:"Are you sick?",img:"https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=200&fit=crop",
+   question:{venda:"Ni khou lwala?",english:"Are you sick?",syllables:"Ni khou lwa-la?",pron:"Nee khoo lwah-lah?",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/No%20kho%20ulwala.m4a"},
+   responses:[
+     {type:"Negative",venda:"Hayi a thi lwali.",english:"No, I'm not sick.",syllables:"Ha-yi a thi lwa-li.",pron:"Hah-yee ah thee lwah-lee.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20athi%20lwali.m4a"},
+     {type:"Negative (Plural)",venda:"Hayi, a ri khou lwala.",english:"No, we are not sick.",syllables:"Ha-yi, a ri khou lwa-la.",pron:"Hah-yee, ah ree khoo lwah-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20ari%20kho%20ulwala.m4a"},
+     {type:"Positive",venda:"E ndi khou lwala.",english:"Yes, I'm sick.",syllables:"E ndi khou lwa-la.",pron:"Eh ndee khoo lwah-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ndikho%20ulwal.m4a"},
+     {type:"Positive (Plural)",venda:"E ri khou lwala.",english:"Yes, we are sick.",syllables:"E ri khou lwa-la.",pron:"Eh ree khoo lwah-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ri%20ikho%20ulwala.m4a"}
+   ]},
+  {topic:"Are you thirsty?",img:"https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&h=200&fit=crop",
+   question:{venda:"Ni na dora?",english:"Are you thirsty?",syllables:"Ni na do-ra?",pron:"Nee nah doh-rah?",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ni%20Na%20dora.m4a"},
+   responses:[
+     {type:"Positive",venda:"E ndi na dora.",english:"Yes, I'm thirsty.",syllables:"E ndi na do-ra.",pron:"Eh ndee nah doh-rah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ndi%20na%20dora.m4a"},
+     {type:"Negative",venda:"A thi na dora.",english:"I'm not thirsty.",syllables:"A thi na do-ra.",pron:"Ah thee nah doh-rah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20athi%20Na%20dora.m4a"},
+     {type:"Negative (Plural)",venda:"Hayi a ri na dora.",english:"We are not thirsty.",syllables:"Ha-yi a ri na do-ra.",pron:"Hah-yee ah ree nah doh-rah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20ari%20Na%20dora.m4a"},
+     {type:"Positive (Plural)",venda:"E ri na dora.",english:"Yes, we are thirsty.",syllables:"E ri na do-ra.",pron:"Eh ree nah doh-rah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ri%20Na%20dora.m4a"}
+   ]},
+  {topic:"Cooking",img:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=200&fit=crop",
+   question:{venda:"Ndi khou thoda u bika.",english:"I want to cook.",syllables:"Ndi khou tho-da u bi-ka.",pron:"Ndee khoo toh-dah oo bee-kah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ni%20kho%20thoda%20ubika.m4a"},
+   responses:[
+     {type:"Positive",venda:"E ndi khou thoda u bika.",english:"Yes, I want to cook.",syllables:"E ndi khou tho-da u bi-ka.",pron:"Eh ndee khoo toh-dah oo bee-kah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ndi%20kho%20thoda%20ubika.m4a"},
+     {type:"Negative",venda:"Hayi a thi khou thoda u bika.",english:"No, I don't want to cook.",syllables:"Ha-yi a thi khou tho-da u bi-ka.",pron:"Hah-yee ah thee khoo toh-dah oo bee-kah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20athi%20kho%20uthoda%20ubika.m4a"},
+     {type:"Positive (Plural)",venda:"E ri khou bika.",english:"Yes, we are cooking.",syllables:"E ri khou bi-ka.",pron:"Eh ree khoo bee-kah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ri%20kho%20ubika.m4a"},
+     {type:"Negative (Plural)",venda:"Hayi a ri khou bika.",english:"No, we are not cooking.",syllables:"Ha-yi a ri khou bi-ka.",pron:"Hah-yee ah ree khoo bee-kah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20ari%20kho%20ubika.m4a"}
+   ]},
+  {topic:"Praying",img:"https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&h=200&fit=crop",
+   question:{venda:"Ndi khou thoda u rabela.",english:"I want to pray.",syllables:"Ndi khou tho-da u ra-be-la.",pron:"Ndee khoo toh-dah oo rah-beh-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ndi%20kho%20uthoda%20urabela.m4a"},
+   responses:[
+     {type:"Positive",venda:"E ndi khou rabela.",english:"Yes, I am praying.",syllables:"E ndi khou ra-be-la.",pron:"Eh ndee khoo rah-beh-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ndi%20kho%20urabela.m4a"},
+     {type:"Negative",venda:"Hayi a thi khou rabela.",english:"No, I'm not praying.",syllables:"Ha-yi a thi khou ra-be-la.",pron:"Hah-yee ah thee khoo rah-beh-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20athi%20kho%20urabela.m4a"},
+     {type:"Positive (Plural)",venda:"E ri kho rabela.",english:"Yes, we are praying.",syllables:"E ri kho ra-be-la.",pron:"Eh ree khoh rah-beh-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/E%20ri%20kho%20urabela.m4a"},
+     {type:"Negative (Plural)",venda:"Hayi a ri khou rabela.",english:"No, we are not praying.",syllables:"Ha-yi a ri khou ra-be-la.",pron:"Hah-yee ah ree khoo rah-beh-lah.",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Hayi%20ari%20kho%20urabela.m4a"}
+   ]}
+];
+var rate=0.9,pitch=1.15;
+function playAudio(url){if(!url){alert('Audio coming soon!');return;}var a=new Audio(url);a.playbackRate=rate;a.play().catch(function(){alert('Could not play audio. Check your internet connection.');});}
+function setProfile(p){document.getElementById('profileName').textContent=p;}
+function renderTopics(){var el=document.getElementById('topicsList');el.innerHTML='';CONVERSATIONS.forEach(function(c,i){var d=document.createElement('div');d.className='topic-item';d.innerHTML='<strong>'+c.topic+'</strong><div style="color:var(--muted);font-size:12px">'+c.question.english+'</div>';d.onclick=function(){document.querySelectorAll('.conv-block')[i].scrollIntoView({behavior:'smooth',block:'start'});};el.appendChild(d);});}
+function renderConversations(){var el=document.getElementById('conversationsSection');el.innerHTML='';CONVERSATIONS.forEach(function(c){var card=document.createElement('div');card.className='card conv-block';var html='';if(c.img){html+='<img src="'+c.img+'" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:12px" alt="'+c.topic+'">';}
+html+='<div class="conv-card"><div class="question-row"><span class="q-label">Q:</span><div style="flex:1"><strong>'+c.question.venda+'</strong><div class="phonetic">'+c.question.syllables+' &bull; '+c.question.pron+'</div><div style="color:var(--muted);font-size:13px;margin-top:2px">'+c.question.english+'</div></div><button class="btn" onclick="playAudio(\''+c.question.audio+'\')">&#128266;</button></div>';
+if(c.responses&&c.responses.length){html+='<div class="response-group">';c.responses.forEach(function(r){html+='<div class="response-item"><div class="resp-type">'+r.type+'</div><div class="resp-row"><div style="flex:1"><strong>'+r.venda+'</strong><div class="phonetic">'+r.syllables+' &bull; '+r.pron+'</div><div style="color:var(--muted);font-size:13px;margin-top:2px">'+r.english+'</div></div><button class="btn" onclick="playAudio(\''+r.audio+'\')">&#128266;</button></div></div>';});html+='</div>';}
+html+='</div>';card.innerHTML=html;el.appendChild(card);});}
+document.getElementById('maleBtn').addEventListener('click',function(){document.getElementById('maleBtn').classList.add('active');document.getElementById('femaleBtn').classList.remove('active');});
+document.getElementById('femaleBtn').addEventListener('click',function(){document.getElementById('femaleBtn').classList.add('active');document.getElementById('maleBtn').classList.remove('active');});
+document.getElementById('rate').addEventListener('input',function(e){rate=parseFloat(e.target.value);});
+document.getElementById('pitch').addEventListener('input',function(e){pitch=parseFloat(e.target.value);});
+renderTopics();renderConversations();
+document.getElementById('audioStatus').textContent=CONVERSATIONS.length+' conversation topics loaded!';
+</script>
+</body>
+</html>
