@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neshehe Girls - Grade 4 Tshivenda</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
+:root{--card:#0b1220;--accent:#10b981;--muted:#94a3b8;--glass:rgba(255,255,255,0.04);}
+*{box-sizing:border-box;}
+body{font-family:Quicksand,system-ui,'Segoe UI',Arial;background:linear-gradient(180deg,#062024 0%,#07122a 100%);color:#e6eef1;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+.app{width:100%;max-width:1100px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));box-shadow:0 10px 30px rgba(2,6,23,0.6);border-radius:14px;padding:18px;display:grid;grid-template-columns:340px 1fr;gap:18px;}
+.sidebar{background:var(--card);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px;}
+.profile{display:flex;gap:12px;align-items:center;}
+.avatar{width:64px;height:64px;border-radius:12px;background:url('cover.jpeg') center/cover no-repeat;flex-shrink:0;}
+h1{font-size:18px;margin:0;}p.lead{color:var(--muted);margin:0;font-size:14px;}
+.card{background:var(--card);padding:14px;border-radius:12px;}
+.btn{background:var(--glass);border:1px solid rgba(255,255,255,0.05);padding:8px 12px;border-radius:10px;cursor:pointer;color:#e6eef1;font-family:inherit;font-size:14px;transition:background 0.2s;}
+.btn:hover{background:rgba(255,255,255,0.08);}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#03121a;border:none;font-weight:600;}
+.btn.active{background:var(--accent);color:#03121a;}
+.jump-list{display:grid;gap:6px;margin-top:8px;}
+.jump-item{background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:8px;cursor:pointer;}
+.jump-item:hover{background:rgba(255,255,255,0.05);}
+.slider{width:140px;}
+.big{display:flex;flex-direction:column;gap:14px;}
+.section-title{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:10px;}
+.grid-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:8px;}
+.grid-cell{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;}
+.phrase-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:8px;border-left:3px solid var(--accent);}
+.phonetic{font-size:12px;color:#06b6d4;font-style:italic;margin-top:3px;}
+.nav-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.status{color:var(--muted);font-size:12px;margin-top:6px;}
+footer{font-size:12px;color:var(--muted);text-align:center;padding:8px;}
+@media(max-width:720px){.app{grid-template-columns:1fr;}body{align-items:flex-start;padding:12px;}}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1566975054213856" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="profile">
+      <div class="avatar"></div>
+      <div>
+        <h1>Neshehe Girls &#8211; Grade 4</h1>
+        <p class="lead" id="profileName">Alexis &#8226; Sadee &#8226; Leslee</p>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Voice</strong>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="maleBtn">Male</button>
+          <button class="btn active" id="femaleBtn">Female</button>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:13px">Speed: <input id="rate" class="slider" type="range" min="0.5" max="1.5" step="0.1" value="0.9"></div>
+      <div style="margin-top:6px;font-size:13px;color:var(--muted)">Pitch: <input id="pitch" class="slider" type="range" min="0.8" max="1.4" step="0.1" value="1.15"></div>
+    </div>
+    <div class="card">
+      <strong>Quick Jump</strong>
+      <div class="jump-list">
+        <div class="jump-item" onclick="document.getElementById('sec-numbers').scrollIntoView({behavior:'smooth'})">&#128290; Numbers 1&#8211;10</div>
+        <div class="jump-item" onclick="document.getElementById('sec-months').scrollIntoView({behavior:'smooth'})">&#128197; Months of the Year</div>
+        <div class="jump-item" onclick="document.getElementById('sec-phrases').scrollIntoView({behavior:'smooth'})">&#128172; Useful Phrases</div>
+        <div class="jump-item" onclick="document.getElementById('sec-body').scrollIntoView({behavior:'smooth'})">&#129494; Body Parts</div>
+        <div class="jump-item" onclick="document.getElementById('sec-colours').scrollIntoView({behavior:'smooth'})">&#127912; Colours</div>
+      </div>
+    </div>
+    <div class="card">
+      <strong>Profiles</strong>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn" onclick="setProfile('Alexis')">Alexis</button>
+        <button class="btn" onclick="setProfile('Sadee')">Sadee</button>
+        <button class="btn primary" onclick="setProfile('Leslee')">Leslee</button>
+      </div>
+    </div>
+    <div class="card">
+      <strong>Progress</strong>
+      <div style="margin-top:8px;color:var(--muted)">Numbers, Months, Phrases &amp; more</div>
+      <div class="status" id="audioStatus">All sections loaded!</div>
+    </div>
+    <div class="card"><strong>Our Princesses</strong><div style="margin-top:8px"><img src="girls.jpg" alt="Alexis, Sadee and Leslee" style="width:100%;border-radius:10px;object-fit:cover"></div></div>
+  </aside>
+  <main class="big">
+    <div class="card">
+      <h2 style="margin:0 0 6px;color:var(--accent)">&#128218; Vocabulary &#8211; Grade 4</h2>
+      <p style="color:var(--muted);margin:0;font-size:14px">Numbers, months, body parts, colours and everyday phrases.</p>
+    </div>
+
+    <div class="card" id="sec-numbers">
+      <div class="section-title">&#128290; Numbers 1&#8211;10</div>
+      <div id="numbersGrid" class="grid-row"></div>
+    </div>
+
+    <div class="card" id="sec-months">
+      <div class="section-title">&#128197; Months of the Year</div>
+      <div id="monthsGrid"></div>
+    </div>
+
+    <div class="card" id="sec-phrases">
+      <div class="section-title">&#128172; Useful Phrases</div>
+      <div id="phrasesGrid"></div>
+    </div>
+
+    <div class="card" id="sec-body">
+      <div class="section-title">&#129494; Body Parts</div>
+      <div id="bodyGrid" class="grid-row"></div>
+    </div>
+
+    <div class="card" id="sec-colours">
+      <div class="section-title">&#127912; Colours</div>
+      <div id="coloursGrid" class="grid-row"></div>
+    </div>
+
+    <div class="card">
+      <strong>Navigation</strong>
+      <div class="nav-buttons">
+        <a href="index3.html" style="text-decoration:none"><button class="btn" style="width:100%;padding:14px">&#11013; Back to Grade 3</button></a>
+        <a href="index5.html" style="text-decoration:none"><button class="btn primary" style="width:100%;padding:14px">Grade 5 &#10145;</button></a>
+      </div>
+    </div>
+    <footer>Made with &#10084;&#65039; for Mutodi's Princesses<br><a href="privacy.html" style="color:#10b981;font-size:12px;text-decoration:underline">&#128274; Privacy Policy</a></footer>
+  </main>
+</div>
+<script>
+var NUMBERS=[
+  {venda:"Thanu",eng:"One",pron:"Tah-noo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Thanu.m4a"},
+  {venda:"Vhuvhili",eng:"Two",pron:"Voo-vee-lee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Vhuvhili.m4a"},
+  {venda:"Vhuraru",eng:"Three",pron:"Voo-rah-roo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Vhuraru.m4a"},
+  {venda:"Vhuna",eng:"Four",pron:"Voo-nah",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Vhuna.m4a"},
+  {venda:"Vhuthanu",eng:"Five",pron:"Voo-tah-noo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Vhuthanu.m4a"},
+  {venda:"Tshitanu",eng:"Six",pron:"Chee-tah-noo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Tshitanu.m4a"},
+  {venda:"Sumbe",eng:"Seven",pron:"Soom-beh",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Sumbe.m4a"},
+  {venda:"Malo",eng:"Eight",pron:"Mah-lo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Malo.m4a"},
+  {venda:"Fumi",eng:"Nine",pron:"Foo-mee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Fumi.m4a"},
+  {venda:"Gumi",eng:"Ten",pron:"Goo-mee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Gumi.m4a"}
+];
+var MONTHS=[
+  {venda:"Phando",eng:"January",pron:"Phan-do",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Phando.m4a"},
+  {venda:"Luhuhi",eng:"February",pron:"Loo-hoo-hee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Luhuhi.m4a"},
+  {venda:"Mudimuvhaahu",eng:"March",pron:"Moo-dee-moo-vhah-hoo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Mudimuvhaahu.m4a"},
+  {venda:"Lambamai",eng:"April",pron:"Lam-bah-my",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Lambamai.m4a"},
+  {venda:"Shundunthule",eng:"May",pron:"Shoon-doon-too-leh",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Shundunthule.m4a"},
+  {venda:"Fulwi",eng:"June",pron:"Fool-wee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Fulwi.m4a"},
+  {venda:"Fulwana",eng:"July",pron:"Fool-wah-nah",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Fulwana.m4a"},
+  {venda:"Ṱhangule",eng:"August",pron:"Tang-oo-leh",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Thangule.m4a"},
+  {venda:"Khubvumedzi",eng:"September",pron:"Khoo-bvoo-meh-dzee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Khubvumedzi.m4a"},
+  {venda:"Tshimedzi",eng:"October",pron:"Chee-meh-dzee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Tshimedzi.m4a"},
+  {venda:"Xavhuvhu",eng:"November",pron:"Khah-vhoo-vhoo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Xavhuvhu.m4a"},
+  {venda:"Nyendavhusiku",eng:"December",pron:"Nyehn-dah-vhoo-see-koo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Nyendavhusiku.m4a"}
+];
+var PHRASES=[
+  {venda:"Ndi a livhuwa",eng:"Thank you",pron:"Ndee ah lee-vhoo-wah",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ndi%20a%20livhuwa.m4a"},
+  {venda:"Zwi luga",eng:"It's okay / You're welcome",pron:"Zwee loo-gah",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/zwi%20luga.m4a"},
+  {venda:"Ndi khou humbela mulalo",eng:"I ask for forgiveness",pron:"Ndee khoo hoom-beh-lah moo-lah-lo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ndi%20khou%20humbela%20mulalo.m4a"},
+  {venda:"Ndi Mutodi",eng:"I am Mutodi",pron:"Ndee Moo-toh-dee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ndi%20Mutodi.m4a"},
+  {venda:"Ndi bva Limpopo",eng:"I'm from Limpopo",pron:"Ndee bvah Lim-po-po",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ndi%20bva%20Limpopo.m4a"},
+  {venda:"Ndi a fara Tshivenda",eng:"I speak Tshivenda",pron:"Ndee ah fah-rah Chee-vehn-dah",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ndi%20a%20fara%20tshivenda.m4a"},
+  {venda:"Muya wavho",eng:"Your spirit / Hello (respectful)",pron:"Moo-yah vah-vho",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Muya%20wavho.m4a"},
+  {venda:"Aa",eng:"Yes (female response)",pron:"Aah",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Aa.m4a"},
+  {venda:"Ndaa",eng:"Yes (male response / respectful greeting)",pron:"Ndah",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/Ndaa.m4a"}
+];
+var BODY=[
+  {venda:"Muswe",eng:"Tail / Back",pron:"Moo-sweh",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/muswe.m4a"},
+  {venda:"Mulenzhe",eng:"Leg",pron:"Moo-lehn-zheh",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/mulenzhe.m4a"},
+  {venda:"Khosi",eng:"Head/Neck",pron:"Kho-see",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/khosi.m4a"},
+  {venda:"Ndevhe",eng:"Ear",pron:"Ndeh-vheh",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ndevhe.m4a"},
+  {venda:"Nzhele",eng:"Nose",pron:"Nzheh-leh",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/nzhele.m4a"},
+  {venda:"Milomo",eng:"Lips",pron:"Mee-lo-mo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/milomo.m4a"},
+  {venda:"Munwe",eng:"Finger",pron:"Moo-nweh",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/munwe.m4a"},
+  {venda:"Mukono",eng:"Arm/Hand",pron:"Moo-ko-no",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/mukono.m4a"}
+];
+var COLOURS=[
+  {venda:"Tswuku",eng:"Red",pron:"Tswoo-koo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/tswuku.m4a",color:"#ef4444"},
+  {venda:"Ntsu",eng:"Black",pron:"Ntsoo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/ntsu.m4a",color:"#1f2937"},
+  {venda:"Phusuphusu",eng:"White/Light",pron:"Poo-soo-poo-soo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/phusuphusu.m4a",color:"#f8fafc"},
+  {venda:"Girini",eng:"Green",pron:"Gee-ree-nee",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/girini.m4a",color:"#10b981"},
+  {venda:"Buluu",eng:"Blue",pron:"Boo-loo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/buluu.m4a",color:"#3b82f6"},
+  {venda:"Yelo",eng:"Yellow",pron:"Yeh-lo",audio:"https://github.com/LinSpin1/Venda-audio/raw/refs/heads/main/yelo.m4a",color:"#eab308"}
+];
+var rate=0.9,pitch=1.15;
+function playAudio(url){if(!url){alert('Audio coming soon!');return;}var a=new Audio(url);a.playbackRate=rate;a.play().catch(function(){alert('Could not play audio. Check your internet connection.');});}
+function setProfile(p){document.getElementById('profileName').textContent=p;}
+function makeCard(v,e,p,a,extra){return'<div class="phrase-card"><div style="display:flex;justify-content:space-between;align-items:center">'+(extra||'')+'<div style="flex:1"><strong>'+v+'</strong> &#8212; '+e+'<div class="phonetic">'+p+'</div></div><button class="btn" onclick="playAudio(\''+a+'\')">&#128266;</button></div></div>';}
+function renderNumbers(){var el=document.getElementById('numbersGrid');el.innerHTML='';NUMBERS.forEach(function(n,i){el.innerHTML+='<div class="grid-cell"><div><strong>'+n.venda+'</strong><div style="color:var(--muted);font-size:12px">'+(i+1)+' &#8212; '+n.eng+'</div><div class="phonetic">'+n.pron+'</div></div><button class="btn" onclick="playAudio(\''+n.audio+'\')">&#128266;</button></div>';});}
+function renderMonths(){var el=document.getElementById('monthsGrid');el.innerHTML='';MONTHS.forEach(function(m){el.innerHTML+=makeCard(m.venda,m.eng,m.pron,m.audio);});}
+function renderPhrases(){var el=document.getElementById('phrasesGrid');el.innerHTML='';PHRASES.forEach(function(p){el.innerHTML+=makeCard(p.venda,p.eng,p.pron,p.audio);});}
+function renderBody(){var el=document.getElementById('bodyGrid');el.innerHTML='';BODY.forEach(function(b){el.innerHTML+='<div class="grid-cell"><div><strong>'+b.venda+'</strong><div style="color:var(--muted);font-size:12px">'+b.eng+'</div><div class="phonetic">'+b.pron+'</div></div><button class="btn" onclick="playAudio(\''+b.audio+'\')">&#128266;</button></div>';});}
+function renderColours(){var el=document.getElementById('coloursGrid');el.innerHTML='';COLOURS.forEach(function(c){el.innerHTML+='<div class="grid-cell"><div style="display:flex;align-items:center;gap:8px"><div style="width:20px;height:20px;border-radius:4px;background:'+c.color+';border:1px solid rgba(255,255,255,0.2);flex-shrink:0"></div><div><strong>'+c.venda+'</strong><div style="color:var(--muted);font-size:12px">'+c.eng+'</div><div class="phonetic">'+c.pron+'</div></div></div><button class="btn" onclick="playAudio(\''+c.audio+'\')">&#128266;</button></div>';});}
+document.getElementById('maleBtn').addEventListener('click',function(){document.getElementById('maleBtn').classList.add('active');document.getElementById('femaleBtn').classList.remove('active');});
+document.getElementById('femaleBtn').addEventListener('click',function(){document.getElementById('femaleBtn').classList.add('active');document.getElementById('maleBtn').classList.remove('active');});
+document.getElementById('rate').addEventListener('input',function(e){rate=parseFloat(e.target.value);});
+document.getElementById('pitch').addEventListener('input',function(e){pitch=parseFloat(e.target.value);});
+renderNumbers();renderMonths();renderPhrases();renderBody();renderColours();
+</script>
+</body>
+</html>
